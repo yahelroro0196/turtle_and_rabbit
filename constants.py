@@ -1,3 +1,3 @@
 READ = 'r'
 ANIMAL_TYPE = 'type'
-ANIMAL_SPEED = 'speed'
+RACERS_CONFIG = 'racers_config'
