@@ -1,0 +1,10 @@
+{
+  "Rabitoni": {
+    "type": "Rabbit",
+    "speed": 20
+  },
+  "Turtolino": {
+    "type": "Turtle",
+    "speed": 5
+  }
+}
