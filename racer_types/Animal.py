@@ -1,8 +1,3 @@
-from dataclasses import dataclass
+from collections import namedtuple
 
-
-@dataclass
-class Animal:
-    name: str
-    steps_per_interval: int
-    interval_spacing: int
+Animal = namedtuple('Animal', ['name', 'steps_per_interval', 'interval_spacing'])
