@@ -42,7 +42,7 @@ def _load_race_settings() -> dict:
         return json.load(cfg_file)[RACE_SETTINGS]
 
 
-def _pre_race_preparation(curr_round, rounds):
+def _pre_round_preparation(curr_round, rounds):
     return _unpack_round_settings(curr_round, rounds)
 
 

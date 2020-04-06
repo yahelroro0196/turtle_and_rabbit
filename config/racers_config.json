@@ -10,7 +10,7 @@
         },
         "Turtolino": {
           "type": "Turtle",
-          "speed": 3,
+          "speed": 2,
           "step_interval": 1
         }
       }
@@ -25,7 +25,7 @@
         },
         "Turtolino": {
           "type": "Turtle",
-          "speed": 2,
+          "speed": 3,
           "step_interval": 1
         }
       }
@@ -41,7 +41,7 @@
         "Turtolino": {
           "type": "Turtle",
           "speed": 3,
-          "step_interval": 0.75
+          "step_interval": 0.25
         }
       }
     }
