@@ -30,7 +30,6 @@ def _build_round_racers(curr_round, race_settings):
 
 def _build_racer(racer_name, racers, racers_settings):
     racer = racers_settings[racer_name]
-    print(racer.values())
     racer_type = racer[ANIMAL_TYPE]
     racer_properties = [racer_name] + [value for key, value in racer.items() if key != ANIMAL_TYPE]
     racers.append(

@@ -1,5 +1,4 @@
-from racer_types.Rabbit import Rabbit
-from racer_types.Turtle import Turtle
+from config import SUPPORTED_ANIMALS
 
 
 def factory(racer_type, racer_properties):
@@ -7,11 +6,8 @@ def factory(racer_type, racer_properties):
     try:
         return options[racer_type](*racer_properties)
     except KeyError:
-        print("{} not in supported animals".format(racer_type))
+        raise KeyError("{} not in supported animals".format(racer_type))
 
 
 def _initialize_options():
-    return {
-        "Rabbit": Rabbit,
-        "Turtle": Turtle
-    }
+    return SUPPORTED_ANIMALS
