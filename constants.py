@@ -6,3 +6,4 @@ RACE_SETTINGS = 'race_settings'
 ROUNDS = 'rounds'
 TRACK_LENGTH = 'track_length'
 TIME_FORMAT = '%X'
+ORIGIN0_OFFSET = 1
