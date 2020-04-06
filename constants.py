@@ -1,9 +1,0 @@
-READ = 'r'
-ANIMAL_TYPE = 'type'
-RACERS_CONFIG = 'racers_config'
-RACERS = 'racers'
-RACE_SETTINGS = 'race_settings'
-ROUNDS = 'rounds'
-TRACK_LENGTH = 'track_length'
-TIME_FORMAT = '%X'
-ORIGIN0_OFFSET = 1
