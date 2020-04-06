@@ -1,30 +1,30 @@
 import asyncio
-import json
 import time
 
-from animal_factory import factory
-from config import RACERS_CONFIG_PATH
 from constants import *
+from prerace_setup import _initialize_rounds, _load_race_settings, _pre_race_preparation
 
 RACER_RUNTIME = 0
 RACER_NAME = 1
 
 
 def race():
-    race_settings = _load_race_config()
+    race_settings = _load_race_settings()
     rounds = _initialize_rounds(race_settings)
 
     loop = asyncio.get_event_loop()
     for curr_round in rounds:
-        round_settings = rounds[curr_round]
-        racers = round_settings[RACERS]
-        track_length = round_settings[TRACK_LENGTH]
         track_runs = []
-        for racer in racers:
-            track_runs.append(track_run(racer, track_length))
+        racers, track_length = _pre_race_preparation(curr_round, rounds)
+        _list_track_run_tasks(racers, track_length, track_runs)
         results = loop.run_until_complete(asyncio.gather(*track_runs))
         _display_round_results(results, curr_round)
     loop.close()
+
+
+def _list_track_run_tasks(racers, track_length, track_runs):
+    for racer in racers:
+        track_runs.append(track_run(racer, track_length))
 
 
 def _display_round_results(results, curr_round):
@@ -36,44 +36,31 @@ def _display_round_results(results, curr_round):
 
 
 async def track_run(racer, track_length):
-    progress = 0
-    steps_per_interval = racer.steps_per_interval
-    interval_spacing = racer.interval_spacing
-    running = True
+    interval_spacing, progress, running, steps_per_interval = await _per_run_unpacking(racer)
     while running:
         print(racer.name + ' progress: ' + str(progress))
         progress += steps_per_interval
         await asyncio.sleep(interval_spacing)
-        if progress >= track_length:
-            running = False
-    print(racer.name + ' finished!')
-    finish_time = time.strftime(TIME_FORMAT)
+        running = await _check_if_finished_run(progress, track_length)
+    finish_time = await _end_of_run_print(racer)
     return finish_time, racer.name
 
 
-def _initialize_rounds(race_settings) -> dict:
-    rounds = {}
-    for i, curr_round in enumerate(race_settings):
-        racers_settings = race_settings[curr_round][RACERS]
-        racers = []
-        for racer_name in racers_settings:
-            _build_racer(racer_name, racers, racers_settings)
-        rounds[str(i + ORIGIN0_OFFSET)] = {
-            TRACK_LENGTH: race_settings[curr_round][TRACK_LENGTH],
-            RACERS: racers
-        }
-    return rounds
+async def _end_of_run_print(racer):
+    print(racer.name + ' finished!')
+    finish_time = time.strftime(TIME_FORMAT)
+    return finish_time
 
 
-def _build_racer(racer_name, racers, racers_settings):
-    racer = racers_settings[racer_name]
-    racer_type = racer[ANIMAL_TYPE]
-    racer_properties = [racer_name] + [value for key, value in racer.items() if key != ANIMAL_TYPE]
-    racers.append(
-        factory(racer_type,
-                racer_properties))
+async def _check_if_finished_run(progress, track_length):
+    if progress >= track_length:
+        return False
+    return True
 
 
-def _load_race_config() -> dict:
-    with open(RACERS_CONFIG_PATH, READ) as cfg_file:
-        return json.load(cfg_file)[RACE_SETTINGS]
+async def _per_run_unpacking(racer):
+    progress = 0
+    steps_per_interval = racer.steps_per_interval
+    interval_spacing = racer.interval_spacing
+    running = True
+    return interval_spacing, progress, running, steps_per_interval
