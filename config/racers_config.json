@@ -1,10 +1,43 @@
 {
-  "Rabitoni": {
-    "type": "Rabbit",
-    "speed": 3
-  },
-  "Turtolino": {
-    "type": "Turtle",
-    "speed": 1
+  "race_settings": {
+    "round_1": {
+      "track_length": 20,
+      "racers": {
+        "Rabitoni": {
+          "type": "Rabbit",
+          "speed": 3
+        },
+        "Turtolino": {
+          "type": "Turtle",
+          "speed": 1
+        }
+      }
+    },
+    "round_2": {
+      "track_length": 20,
+      "racers": {
+        "Rabitoni": {
+          "type": "Rabbit",
+          "speed": 2
+        },
+        "Turtolino": {
+          "type": "Turtle",
+          "speed": 2
+        }
+      }
+    },
+    "round_3": {
+      "track_length": 20,
+      "racers": {
+        "Rabitoni": {
+          "type": "Rabbit",
+          "speed": 4
+        },
+        "Turtolino": {
+          "type": "Turtle",
+          "speed": 3
+        }
+      }
+    }
   }
 }
