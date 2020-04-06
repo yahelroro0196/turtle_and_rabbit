@@ -3,14 +3,15 @@ import json
 import time
 
 from animal_factory import factory
+from config import RACERS_CONFIG_PATH
 from constants import *
 
 RACER_RUNTIME = 0
 RACER_NAME = 1
 
 
-def race(config):
-    race_settings = _load_race_config(config)
+def race():
+    race_settings = _load_race_config()
     rounds = _initialize_rounds(race_settings)
 
     loop = asyncio.get_event_loop()
@@ -30,18 +31,19 @@ def _display_round_results(results, curr_round):
     results = sorted(results, key=lambda res: res[RACER_RUNTIME])
     print('round {} results:'.format(curr_round))
     for i, result in enumerate(results):
-        print('{} place: {} with a time of {}'.format(i + ORIGIN0_OFFSET, result[RACER_NAME], result[RACER_RUNTIME]))
+        racer_name, racer_runtime = result[RACER_NAME], result[RACER_RUNTIME]
+        print('{} place: {} with a time of {}'.format(i + ORIGIN0_OFFSET, racer_name, racer_runtime))
 
 
 async def track_run(racer, track_length):
     progress = 0
-    speed = racer.speed
-    step_interval = racer.step_interval
+    steps_per_interval = racer.steps_per_interval
+    interval_spacing = racer.interval_spacing
     running = True
     while running:
         print(racer.name + ' progress: ' + str(progress))
-        progress += speed
-        await asyncio.sleep(step_interval)
+        progress += steps_per_interval
+        await asyncio.sleep(interval_spacing)
         if progress >= track_length:
             running = False
     print(racer.name + ' finished!')
@@ -72,6 +74,6 @@ def _build_racer(racer_name, racers, racers_settings):
                 racer_properties))
 
 
-def _load_race_config(config) -> dict:
-    with open(config[RACERS_CONFIG], READ) as cfg_file:
+def _load_race_config() -> dict:
+    with open(RACERS_CONFIG_PATH, READ) as cfg_file:
         return json.load(cfg_file)[RACE_SETTINGS]

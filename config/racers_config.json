@@ -10,7 +10,7 @@
         },
         "Turtolino": {
           "type": "Turtle",
-          "speed": 1,
+          "speed": 3,
           "step_interval": 1
         }
       }

@@ -1,1 +1,1 @@
-config_path = r".\config\config_paths.json"
+RACERS_CONFIG_PATH = r'config/racers_config.json'
