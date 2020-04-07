@@ -1,3 +1,2 @@
-READ = 'r'
 TIME_FORMAT = '%X'
 ORIGIN0_OFFSET = 1

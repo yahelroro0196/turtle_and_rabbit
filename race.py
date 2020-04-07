@@ -14,13 +14,14 @@ def race():
     rounds = initialize_rounds(race_settings)
 
     loop = asyncio.get_event_loop()
-    for curr_round in rounds:
-        _run_round(curr_round, loop, rounds)
+    for round_num in rounds:
+        curr_round = rounds[round_num]
+        _run_round(curr_round, loop)
     loop.close()
 
 
-def _run_round(curr_round, loop, rounds):
-    racers, track_length = unpack_round_settings(curr_round, rounds)
+def _run_round(curr_round, loop):
+    racers, track_length = unpack_round_settings(curr_round)
     track_runs = [track_run(racer, track_length) for racer in racers]
     results = loop.run_until_complete(asyncio.gather(*track_runs))
     _display_round_results(results, curr_round)
@@ -28,10 +29,10 @@ def _run_round(curr_round, loop, rounds):
 
 def _display_round_results(results, curr_round):
     results = sorted(results, key=operator.itemgetter(RACER_RUNTIME))
-    print(f'round {curr_round} results:')
-    for i, result in enumerate(results):
+    print(f'round {curr_round.number} results:')
+    for racer_placement, result in enumerate(results):
         racer_runtime, racer_name = result
-        print(f'{i + ORIGIN0_OFFSET} place: {racer_name} with a time of {racer_runtime}')
+        print(f'{racer_placement + ORIGIN0_OFFSET} place: {racer_name} with a time of {racer_runtime}')
 
 
 async def track_run(racer, track_length):

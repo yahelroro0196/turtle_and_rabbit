@@ -1,3 +1,3 @@
-from collections import namedtuple
+from typing import NamedTuple
 
-Animal = namedtuple('Animal', ['name', 'steps_per_interval', 'interval_spacing'])
+Animal = NamedTuple('Animal', [('name', str), ('steps_per_interval', int), ('interval_spacing', float)])
