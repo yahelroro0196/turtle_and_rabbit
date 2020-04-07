@@ -1,7 +1,9 @@
+from dataclasses import dataclass
 from racer_types.Animal import Animal
 
 
+@dataclass
 class Turtle(Animal):
-    def __new__(cls, name, steps_per_interval, interval_spacing):
-        self = super(Turtle, cls).__new__(cls, name, steps_per_interval, interval_spacing)
-        return self
+    name: str
+    steps_per_interval: int
+    interval_spacing: float

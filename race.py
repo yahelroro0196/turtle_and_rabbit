@@ -1,6 +1,6 @@
 import asyncio
-import time
 import operator
+import time
 
 from constants import TIME_FORMAT, ORIGIN0_OFFSET
 from prerace_setup import initialize_rounds, load_race_settings, unpack_round_settings

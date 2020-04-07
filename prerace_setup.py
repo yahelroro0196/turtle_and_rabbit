@@ -1,8 +1,8 @@
 import json
 
+from Round import Round
 from animal_factory import factory
 from config import RACERS_CONFIG_PATH
-from Round import Round
 from constants import ORIGIN0_OFFSET
 
 TRACK_LENGTH = 'track_length'
