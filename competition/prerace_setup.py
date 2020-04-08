@@ -1,7 +1,7 @@
 import json
 
-from Round import Round
 from animal_factory import factory
+from competition.Round import Round
 from config import RACERS_CONFIG_PATH
 from constants import ORIGIN0_OFFSET
 

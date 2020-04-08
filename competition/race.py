@@ -1,9 +1,9 @@
 import asyncio
 import time
 
+from competition.prerace_setup import unpack_round_settings, load_race_settings, initialize_rounds
+from competition.race_gui import *
 from constants import TIME_FORMAT
-from prerace_setup import unpack_round_settings, load_race_settings, initialize_rounds
-from competition.race_gui import _run_end_print, _display_round_results
 
 
 def start_competition():
@@ -19,11 +19,12 @@ def start_competition():
 async def _track_run(racer, track_length):
     interval_spacing, progress, running, steps_per_interval = await _per_run_unpacking(racer)
     while running:
+        await print_progress(racer, progress)
         progress += steps_per_interval
         running = await _check_if_finished_run(progress, track_length)
         await asyncio.sleep(interval_spacing)
     finish_time = await _end_of_run_time()
-    await _run_end_print(racer)
+    await run_end_print(racer)
     return finish_time, racer.name
 
 
@@ -31,7 +32,7 @@ def _run_round(curr_round, loop):
     racers, track_length = unpack_round_settings(curr_round)
     track_runs = [_track_run(racer, track_length) for racer in racers]
     results = loop.run_until_complete(asyncio.gather(*track_runs))
-    _display_round_results(results, curr_round)
+    display_round_results(results, curr_round)
 
 
 async def _end_of_run_time():
