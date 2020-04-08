@@ -1,4 +1,4 @@
-from race import race
+from competition.race import start_competition
 
 if __name__ == '__main__':
-    race()
+    start_competition()

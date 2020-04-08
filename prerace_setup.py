@@ -13,12 +13,11 @@ RACE_SETTINGS = 'race_settings'
 ROUNDS = 'rounds'
 
 
-def initialize_rounds(race_settings: dict) -> dict:
-    rounds = {}
-    for round_num, curr_round in enumerate(race_settings):
-        round_settings = race_settings[curr_round]
-        racers = _build_round_racers(round_settings)
-        rounds[round_num] = _build_round(round_num, round_settings, racers)
+def initialize_rounds(race_settings: dict) -> list:
+    rounds = [
+        _build_round(round_num, round_settings, _build_round_racers(round_settings))
+        for round_num, round_settings in enumerate(race_settings.values())
+    ]
     return rounds
 
 
@@ -44,6 +43,6 @@ def _build_round_racers(round_settings: dict):
 def _build_racer(racer_name: str, racers_settings: dict):
     racer = racers_settings[racer_name]
     racer_type = racer[ANIMAL_TYPE]
-    del racer[ANIMAL_TYPE]
+    racer = {setting: value for setting, value in enumerate(racer.values()) if value != racer_type}
     racer_properties = [racer_name] + [*racer.values()]
     return factory(racer_type, racer_properties)
