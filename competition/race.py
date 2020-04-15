@@ -1,7 +1,7 @@
+import asyncio
 import time
 
 from competition.prerace_setup import unpack_round_settings
-from competition.race_gui import *
 from constants import TIME_FORMAT
 
 
@@ -25,8 +25,7 @@ async def _track_run(racer, track_length):
 
 
 async def _end_of_run_time():
-    finish_time = time.strftime(TIME_FORMAT)
-    return finish_time
+    return time.strftime(TIME_FORMAT)
 
 
 async def _check_if_finished_run(progress, track_length):
@@ -35,3 +34,11 @@ async def _check_if_finished_run(progress, track_length):
 
 async def _per_run_unpacking(racer):
     return racer.interval_spacing, 0, True, racer.steps_per_interval
+
+
+async def print_progress(racer, progress):
+    print(f'{racer.name} progress: {progress}')
+
+
+async def run_end_print(racer):
+    print(f'{racer.name} finished!')

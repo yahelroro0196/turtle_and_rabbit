@@ -25,11 +25,3 @@ def _display_round_results(results, curr_round):
     for racer_placement, result in enumerate(results):
         racer_runtime, racer_name = result
         print(f'{racer_placement + ORIGIN0_OFFSET} place: {racer_name} with a time of {racer_runtime}')
-
-
-async def print_progress(racer, progress):
-    print(f'{racer.name} progress: {progress}')
-
-
-async def run_end_print(racer):
-    print(f'{racer.name} finished!')

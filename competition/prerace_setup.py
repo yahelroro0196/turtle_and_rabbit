@@ -13,17 +13,16 @@ RACE_SETTINGS = 'race_settings'
 ROUNDS = 'rounds'
 
 
-def initialize_rounds(race_settings: dict) -> list:
-    rounds = [
+def initialize_rounds(race_settings: dict):
+    return (
         _build_round(round_num, round_settings, _build_round_racers(round_settings))
         for round_num, round_settings in enumerate(race_settings.values())
-    ]
-    return rounds
+    )
 
 
 def load_race_settings() -> dict:
     with open(RACERS_CONFIG_PATH) as cfg_file:
-        return json.load(cfg_file)[RACE_SETTINGS]
+        return json.load(cfg_file)
 
 
 def unpack_round_settings(curr_round):
@@ -42,7 +41,6 @@ def _build_round_racers(round_settings: dict):
 
 def _build_racer(racer_name: str, racers_settings: dict):
     racer = racers_settings[racer_name]
-    racer_type = racer[ANIMAL_TYPE]
-    racer = {setting: value for setting, value in enumerate(racer.values()) if value != racer_type}
-    racer_properties = [racer_name] + [*racer.values()]
+    racer_type = racer.pop(ANIMAL_TYPE)
+    racer_properties = [racer_name, *racer.values()]
     return factory(racer_type, racer_properties)
