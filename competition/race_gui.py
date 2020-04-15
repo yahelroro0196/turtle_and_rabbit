@@ -27,6 +27,10 @@ async def end_of_run_print(racer):
     print(f'{racer.name} finished!')
 
 
+async def passed_out_print(racer):
+    print(f'{racer.name} is passed out!')
+
+
 def _display_round_results(results, curr_round):
     results = sorted(results, key=operator.itemgetter(RACER_RUNTIME))
     print(f'round {curr_round.number} results:')
