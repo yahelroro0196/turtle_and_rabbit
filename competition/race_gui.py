@@ -19,6 +19,14 @@ def start_competition():
     loop.close()
 
 
+async def racer_progress_print(racer, progress):
+    print(f'{racer.name} progress: {progress}')
+
+
+async def end_of_run_print(racer):
+    print(f'{racer.name} finished!')
+
+
 def _display_round_results(results, curr_round):
     results = sorted(results, key=operator.itemgetter(RACER_RUNTIME))
     print(f'round {curr_round.number} results:')
