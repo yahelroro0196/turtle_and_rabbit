@@ -34,4 +34,4 @@ async def _check_if_finished_run(progress, track_length):
 
 
 async def _per_run_unpacking(racer):
-    return racer.interval_spacing, 0, True, racer.steps_per_interval
+    return racer.interval_spacing, racer.starting_position, True, racer.steps_per_interval
