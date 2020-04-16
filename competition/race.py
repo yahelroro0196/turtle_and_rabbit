@@ -30,11 +30,7 @@ async def _track_run(racer, track_length):
 
 async def _update_progress(racer, progress, steps_per_interval):
     if racer.passed_out_time != NO_PASS_OUT:
-        progress += racer.steps_before_pass_out
-        await race_gui.passed_out_print(racer)
-        await asyncio.sleep(racer.passed_out_time)
-        step_difference = steps_per_interval - racer.steps_before_pass_out
-        progress += step_difference
+        progress = await racer.pass_out(progress)
     else:
         progress += steps_per_interval
     return progress

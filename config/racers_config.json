@@ -4,13 +4,13 @@
     "racers": {
       "Rabitoni": {
         "type": "Rabbit",
-        "speed": 3,
-        "step_interval": 1
+        "steps_per_interval": 3,
+        "interval_spacing": 1
       },
       "Turtolino": {
         "type": "Turtle",
-        "speed": 2,
-        "step_interval": 1
+        "steps_per_interval": 2,
+        "interval_spacing": 1
       }
     }
   },
@@ -19,13 +19,13 @@
     "racers": {
       "Rabitoni": {
         "type": "Rabbit",
-        "speed": 3,
-        "step_interval": 1
+        "steps_per_interval": 3,
+        "interval_spacing": 1
       },
       "Turtolino": {
         "type": "Turtle",
-        "speed": 2,
-        "step_interval": 1,
+        "steps_per_interval": 2,
+        "interval_spacing": 1,
         "starting_position": 6
       }
     }
@@ -35,20 +35,20 @@
     "racers": {
       "Rabitoni": {
         "type": "Rabbit",
-        "speed": 3,
-        "step_interval": 1
+        "steps_per_interval": 3,
+        "interval_spacing": 1
       },
       "Turtolino": {
         "type": "Turtle",
-        "speed": 4,
-        "step_interval": 1,
+        "steps_per_interval": 4,
+        "interval_spacing": 1,
         "passed_out_time": 1,
         "steps_before_pass_out": 3
       },
-      "Snail": {
+      "Snaily": {
         "type": "Snail",
-        "speed": 1,
-        "step_interval": 1,
+        "steps_per_interval": 1,
+        "interval_spacing": 1,
         "starting_position": 10
       }
     }

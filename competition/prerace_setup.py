@@ -5,12 +5,15 @@ from competition.Round import Round
 from config import RACERS_CONFIG_PATH
 from constants import ORIGIN0_OFFSET
 
+RACER_PROPERTIES = 'racer_properties'
+
 TRACK_LENGTH = 'track_length'
 RACERS = 'racers'
 ANIMAL_TYPE = 'type'
 RACERS_CONFIG = 'racers_config'
 RACE_SETTINGS = 'race_settings'
 ROUNDS = 'rounds'
+RACER_NAME = 'name'
 
 
 def initialize_rounds(race_settings: dict):
@@ -40,7 +43,7 @@ def _build_round_racers(round_settings: dict):
 
 
 def _build_racer(racer_name: str, racers_settings: dict):
-    racer = racers_settings[racer_name]
-    racer_type = racer.pop(ANIMAL_TYPE)
-    racer_properties = [racer_name, *racer.values()]
+    racer_properties = racers_settings[racer_name]
+    racer_type = racer_properties.pop(ANIMAL_TYPE)
+    racer_properties[RACER_NAME] = racer_name
     return factory(racer_type, racer_properties)
