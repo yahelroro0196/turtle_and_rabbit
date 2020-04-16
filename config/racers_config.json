@@ -5,42 +5,48 @@
       "Rabitoni": {
         "type": "Rabbit",
         "speed": 3,
-        "step_interval": 1
+        "step_interval": 1,
+        "starting_position": 0
       },
       "Turtolino": {
         "type": "Turtle",
         "speed": 2,
-        "step_interval": 1
+        "step_interval": 1,
+        "starting_position": 0
       }
     }
   },
   "round_2": {
-    "track_length": 15,
+    "track_length": 20,
     "racers": {
       "Rabitoni": {
         "type": "Rabbit",
-        "speed": 1,
-        "step_interval": 0.5
+        "speed": 3,
+        "step_interval": 0.5,
+        "starting_position": 0
       },
       "Turtolino": {
         "type": "Turtle",
-        "speed": 3,
-        "step_interval": 1
+        "speed": 2,
+        "step_interval": 1,
+        "starting_position": 6
       }
     }
   },
   "round_3": {
-    "track_length": 10,
+    "track_length": 20,
     "racers": {
       "Rabitoni": {
         "type": "Rabbit",
         "speed": 4,
-        "step_interval": 1
+        "step_interval": 1,
+        "starting_position": 0
       },
       "Turtolino": {
         "type": "Turtle",
         "speed": 3,
-        "step_interval": 0.25
+        "step_interval": 1,
+        "starting_position": 0
       }
     }
   }
