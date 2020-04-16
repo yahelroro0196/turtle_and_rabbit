@@ -4,15 +4,13 @@
     "racers": {
       "Rabitoni": {
         "type": "Rabbit",
-        "speed": 3,
-        "step_interval": 1,
-        "starting_position": 0
+        "steps_per_interval": 3,
+        "interval_spacing": 1
       },
       "Turtolino": {
         "type": "Turtle",
-        "speed": 2,
-        "step_interval": 1,
-        "starting_position": 0
+        "steps_per_interval": 2,
+        "interval_spacing": 1
       }
     }
   },
@@ -21,32 +19,37 @@
     "racers": {
       "Rabitoni": {
         "type": "Rabbit",
-        "speed": 3,
-        "step_interval": 0.5,
-        "starting_position": 0
+        "steps_per_interval": 3,
+        "interval_spacing": 1
       },
       "Turtolino": {
         "type": "Turtle",
-        "speed": 2,
-        "step_interval": 1,
+        "steps_per_interval": 2,
+        "interval_spacing": 1,
         "starting_position": 6
       }
     }
   },
   "round_3": {
-    "track_length": 20,
+    "track_length": 15,
     "racers": {
       "Rabitoni": {
         "type": "Rabbit",
-        "speed": 4,
-        "step_interval": 1,
-        "starting_position": 0
+        "steps_per_interval": 3,
+        "interval_spacing": 1
       },
       "Turtolino": {
         "type": "Turtle",
-        "speed": 3,
-        "step_interval": 1,
-        "starting_position": 0
+        "steps_per_interval": 4,
+        "interval_spacing": 1,
+        "passed_out_time": 1,
+        "steps_before_pass_out": 3
+      },
+      "Snaily": {
+        "type": "Snail",
+        "steps_per_interval": 1,
+        "interval_spacing": 1,
+        "starting_position": 10
       }
     }
   }
