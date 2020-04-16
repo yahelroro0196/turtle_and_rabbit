@@ -5,10 +5,6 @@ from racer_types.Animal import Animal
 
 
 class Turtle(Animal):
-    name: str
-    steps_per_interval: int
-    interval_spacing: float
-
     async def pass_out(self, progress):
         progress += self.steps_before_pass_out
         await race_gui.racer_progress_print(self, progress)
