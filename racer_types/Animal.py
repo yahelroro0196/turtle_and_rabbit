@@ -6,5 +6,5 @@ class Animal(NamedTuple):
     steps_per_interval: int
     interval_spacing: float
     starting_position: int
-    passed_out_time: float
-    steps_before_pass_out: int
+    passed_out_time: float = 0.0
+    steps_before_pass_out: int = 0
