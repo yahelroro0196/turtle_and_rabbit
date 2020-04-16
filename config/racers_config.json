@@ -5,18 +5,12 @@
       "Rabitoni": {
         "type": "Rabbit",
         "speed": 3,
-        "step_interval": 1,
-        "starting_position": 0,
-        "passed_out_time": 0,
-        "steps_before_pass_out": 0
+        "step_interval": 1
       },
       "Turtolino": {
         "type": "Turtle",
         "speed": 2,
-        "step_interval": 1,
-        "starting_position": 0,
-        "passed_out_time": 0,
-        "steps_before_pass_out": 0
+        "step_interval": 1
       }
     }
   },
@@ -26,18 +20,13 @@
       "Rabitoni": {
         "type": "Rabbit",
         "speed": 3,
-        "step_interval": 0.5,
-        "starting_position": 0,
-        "passed_out_time": 0,
-        "steps_before_pass_out": 0
+        "step_interval": 1
       },
       "Turtolino": {
         "type": "Turtle",
         "speed": 2,
         "step_interval": 1,
-        "starting_position": 6,
-        "passed_out_time": 0,
-        "steps_before_pass_out": 0
+        "starting_position": 6
       }
     }
   },
@@ -47,16 +36,12 @@
       "Rabitoni": {
         "type": "Rabbit",
         "speed": 3,
-        "step_interval": 1,
-        "starting_position": 0,
-        "passed_out_time": 0,
-        "steps_before_pass_out": 0
+        "step_interval": 1
       },
       "Turtolino": {
         "type": "Turtle",
         "speed": 4,
         "step_interval": 1,
-        "starting_position": 0,
         "passed_out_time": 1,
         "steps_before_pass_out": 3
       },
@@ -64,9 +49,7 @@
         "type": "Snail",
         "speed": 1,
         "step_interval": 1,
-        "starting_position": 10,
-        "passed_out_time": 0,
-        "steps_before_pass_out": 0
+        "starting_position": 10
       }
     }
   }
